@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontrol Lampu Rumah</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 20px 40px;
+            font-size: 24px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+        .on {
+            background-color: green;
+            color: white;
+        }
+        .off {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kontrol Lampu Rumah</h1>
+    <button class="on" onclick="turnOn()">NYALAKAN</button>
+    <button class="off" onclick="turnOff()">MATIKAN</button>
+
+    <script>
+        function turnOn() {
+            fetch("https://api.thingspeak.com/update?api_key=VW5Q7BKOZ0AM2IHQ&field1=1")
+                .then(() => alert("Lampu dinyalakan!"));
+        }
+
+        function turnOff() {
+            fetch("https://api.thingspeak.com/update?api_key=VW5Q7BKOZ0AM2IHQ&field1=0")
+                .then(() => alert("Lampu dimatikan!"));
+        }
+    </script>
+</body>
+</html>
